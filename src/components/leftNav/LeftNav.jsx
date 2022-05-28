@@ -5,7 +5,7 @@ import {
 } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHorse, faPaw, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faHorse, faPaw } from '@fortawesome/free-solid-svg-icons';
 
 function LeftNav({ className }) {
   return (
@@ -16,7 +16,7 @@ function LeftNav({ className }) {
           <MenuItem>Members</MenuItem>
           <MenuItem>Player search</MenuItem>
         </SubMenu>
-        <MenuItem icon={<FontAwesomeIcon icon={faPaw} />}>Minions</MenuItem>
+        <MenuItem active icon={<FontAwesomeIcon icon={faPaw} />}>Minions</MenuItem>
         <MenuItem icon={<FontAwesomeIcon icon={faHorse} />}>Mounts</MenuItem>
       </Menu>
     </ProSidebar>

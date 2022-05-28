@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import './App.css';
+import Template from './components/global/Template';
 import LeftNav from './components/leftNav/LeftNav';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   return (
     <div style={{ height: viewHeight }}>
       <LeftNav className="sidebar" />
-      <Container className="container" />
+      <Template className="container" />
     </div>
   );
 }

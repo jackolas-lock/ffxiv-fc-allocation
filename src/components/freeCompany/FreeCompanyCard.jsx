@@ -6,14 +6,14 @@ function FreeCompanyCard({ fc }) {
   return (
     <Card border="info" className="text-center">
       <Card.Header>
-        <em>Selected FC</em>
+        <h3 style={{ marginBottom: 0 }}>Selected FC</h3>
       </Card.Header>
       <Card.Body>
         {fc ? (
           <Card.Text>
-            <strong>
+            <h5>
               {fc.Name} | {fc.Server}
-            </strong>
+            </h5>
           </Card.Text>
         ) : (
           'No FC Selected'

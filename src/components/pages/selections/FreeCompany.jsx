@@ -57,44 +57,50 @@ function FreeCompany() {
     <>
       <Row>
         <Col lg={8}>
-          <h1>Free Company</h1>
+          <Row>
+            <h1>Free Company</h1>
+          </Row>
+          <Form>
+            <Row style={{ marginTop: 10 }}>
+              <Col lg={4}>
+                <Form.Control
+                  type="text"
+                  placeholder="FC Name"
+                  value={fcName}
+                  onChange={(e) => setFcName(e.target.value)}
+                />
+              </Col>
+              <Col lg={4}>
+                <Select
+                  placeholder="Server (optional)"
+                  value={{ label: fcServer, value: fcServer }}
+                  options={availableServers}
+                  onChange={(e) => setFcServer(e.value)}
+                />
+              </Col>
+              <Col lg={4}>
+                <Button
+                  variant="primary"
+                  disabled={loading}
+                  onClick={searchFCs}
+                >
+                  {loading ? (
+                    <>
+                      <Spinner as="span" size="sm" animation="border" />{' '}
+                      Searching...
+                    </>
+                  ) : (
+                    'Search'
+                  )}
+                </Button>
+              </Col>
+            </Row>
+          </Form>
         </Col>
         <Col lg={4}>
           <FreeCompanyCard fc={selectedFC} />
         </Col>
       </Row>
-      <Form>
-        <Row>
-          <Col lg={2}>
-            <Form.Control
-              type="text"
-              placeholder="FC Name"
-              value={fcName}
-              onChange={(e) => setFcName(e.target.value)}
-            />
-          </Col>
-          <Col lg={2}>
-            <Select
-              placeholder="Server (optional)"
-              value={{ label: fcServer, value: fcServer }}
-              options={availableServers}
-              onChange={(e) => setFcServer(e.value)}
-            />
-          </Col>
-          <Col lg={2}>
-            <Button variant="primary" disabled={loading} onClick={searchFCs}>
-              {loading ? (
-                <>
-                  <Spinner as="span" size="sm" animation="border" />{' '}
-                  Searching...
-                </>
-              ) : (
-                'Search'
-              )}
-            </Button>
-          </Col>
-        </Row>
-      </Form>
       <Row>
         <Col>
           <FreeCompanyTable

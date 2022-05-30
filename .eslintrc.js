@@ -24,6 +24,7 @@ module.exports = {
     'no-unused-vars': 'warn',
     'max-len': 'warn',
     'object-curly-newline': 'off',
+    'no-debugger': 'warn',
   },
   settings: {
     'import/resolver': {

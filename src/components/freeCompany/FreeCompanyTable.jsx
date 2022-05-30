@@ -1,11 +1,11 @@
 import { React } from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import LayeredImage from 'components/global/LayeredImage';
 
-function FreeCompanyTable({ freeCompanies }) {
+function FreeCompanyTable({ freeCompanies, handleSelectFC }) {
   const tableHeaders = ['Crest', 'FC Name', 'Server'];
-  const crestWidth = 50;
+  const crestSize = 50;
 
   return (
     <Table style={{ marginTop: 30 }} striped hover>
@@ -18,12 +18,17 @@ function FreeCompanyTable({ freeCompanies }) {
       </thead>
       <tbody>
         {freeCompanies.map((fc) => (
-          <tr key={fc.ID} style={{ height: crestWidth + 16 }}>
+          <tr key={fc.ID} style={{ height: crestSize + 16 }}>
             <td>
-              <LayeredImage layers={fc.Crest} style={{ width: crestWidth }} />
+              <LayeredImage layers={fc.Crest} style={{ width: crestSize }} />
             </td>
             <td style={{ verticalAlign: 'middle' }}>{fc.Name}</td>
             <td style={{ verticalAlign: 'middle' }}>{fc.Server}</td>
+            <td style={{ verticalAlign: 'middle' }}>
+              <Button variant="primary" onClick={() => handleSelectFC(fc)}>
+                Select
+              </Button>
+            </td>
           </tr>
         ))}
       </tbody>
@@ -33,6 +38,7 @@ function FreeCompanyTable({ freeCompanies }) {
 
 FreeCompanyTable.propTypes = {
   freeCompanies: PropTypes.arrayOf(PropTypes.shape),
+  handleSelectFC: PropTypes.func.isRequired,
 };
 
 FreeCompanyTable.defaultProps = {

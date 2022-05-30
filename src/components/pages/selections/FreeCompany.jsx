@@ -5,9 +5,12 @@ import FreeCompanyCard from 'components/freeCompany/FreeCompanyCard';
 import FreeCompanyTable from 'components/freeCompany/FreeCompanyTable';
 
 function FreeCompany() {
-  const [servers, setServers] = useState([]);
+  const [availableServers, setAvailableServers] = useState([]);
   const [fcName, setFcName] = useState(localStorage.getItem('fcName'));
   const [fcServer, setFcServer] = useState(localStorage.getItem('fcServer'));
+  const [selectedFC, setSelectedFC] = useState(
+    JSON.parse(localStorage.getItem('selectedFC'))
+  );
   const [tableData, setTableData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -15,9 +18,9 @@ function FreeCompany() {
     fetch('https://xivapi.com/servers/dc')
       .then((response) => response.json())
       .then((data) => {
-        const dataCenterOptions = [];
+        const fetchedServers = [];
         Object.keys(data).forEach((key) => {
-          dataCenterOptions.push({
+          fetchedServers.push({
             label: key,
             options: data[key].map((server) => ({
               value: server,
@@ -25,7 +28,7 @@ function FreeCompany() {
             })),
           });
         });
-        setServers(dataCenterOptions);
+        setAvailableServers(fetchedServers);
       });
   };
 
@@ -47,12 +50,18 @@ function FreeCompany() {
   useEffect(() => {
     localStorage.setItem('fcName', fcName);
     localStorage.setItem('fcServer', fcServer);
-  }, [fcName, fcServer]);
+    localStorage.setItem('selectedFC', JSON.stringify(selectedFC));
+  }, [fcName, fcServer, selectedFC]);
 
   return (
     <>
       <Row>
-        <h1>Free Company</h1>
+        <Col lg={8}>
+          <h1>Free Company</h1>
+        </Col>
+        <Col lg={4}>
+          <FreeCompanyCard fc={selectedFC} />
+        </Col>
       </Row>
       <Form>
         <Row>
@@ -68,7 +77,7 @@ function FreeCompany() {
             <Select
               placeholder="Server (optional)"
               value={{ label: fcServer, value: fcServer }}
-              options={servers}
+              options={availableServers}
               onChange={(e) => setFcServer(e.value)}
             />
           </Col>
@@ -84,14 +93,14 @@ function FreeCompany() {
               )}
             </Button>
           </Col>
-          <Col lg={6}>
-            <FreeCompanyCard fc />
-          </Col>
         </Row>
       </Form>
       <Row>
         <Col>
-          <FreeCompanyTable freeCompanies={tableData} />
+          <FreeCompanyTable
+            freeCompanies={tableData}
+            handleSelectFC={setSelectedFC}
+          />
         </Col>
       </Row>
     </>

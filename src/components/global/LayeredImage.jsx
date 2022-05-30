@@ -25,11 +25,11 @@ function LayeredImage({ layers, style }) {
 
 LayeredImage.propTypes = {
   layers: PropTypes.arrayOf(PropTypes.string).isRequired,
-  style: PropTypes.string,
+  style: PropTypes.objectOf(PropTypes.shape),
 };
 
 LayeredImage.defaultProps = {
-  style: '',
+  style: {},
 };
 
 export default LayeredImage;

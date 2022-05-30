@@ -6,6 +6,8 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
     'airbnb',
     'airbnb/hooks',
     'prettier',
@@ -22,5 +24,12 @@ module.exports = {
     'no-unused-vars': 'warn',
     'max-len': 'warn',
     'object-curly-newline': 'off',
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        moduleDirectory: ['node_modules', 'src/'],
+      },
+    },
   },
 };

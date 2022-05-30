@@ -16,10 +16,10 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-  ],
+  plugins: ['react'],
   rules: {
-    'no-unused-vars': 'off',
+    'no-unused-vars': 'warn',
+    'max-len': 'warn',
+    'object-curly-newline': 'off',
   },
 };

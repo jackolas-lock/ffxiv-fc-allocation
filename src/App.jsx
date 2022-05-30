@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import Template from './components/global/Template';
 import LeftNav from './components/leftNav/LeftNav';
+import FreeCompany from './components/pages/selections/FreeCompany';
 
 function App() {
-  const viewHeight = window.outerHeight;
+  const [viewHeight] = useState(window.document.documentElement.clientHeight);
+  const [activePage, setActivePage] = useState('freeCompany');
 
   return (
-    <div style={{ height: viewHeight }}>
-      <LeftNav className="sidebar" />
-      <Template className="container" />
+    <div className="app" style={{ height: viewHeight }}>
+      <LeftNav
+        className="sidebar"
+        activePage={activePage}
+        onClick={(e) => setActivePage(e)}
+      />
+      <main>{activePage === 'freeCompany' && <FreeCompany />}</main>
     </div>
   );
 }

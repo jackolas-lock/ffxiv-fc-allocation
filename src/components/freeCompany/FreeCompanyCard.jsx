@@ -11,9 +11,9 @@ function FreeCompanyCard({ fc }) {
       <Card.Body>
         {fc ? (
           <Card.Text>
-            <h5>
+            <strong>
               {fc.Name} | {fc.Server}
-            </h5>
+            </strong>
           </Card.Text>
         ) : (
           'No FC Selected'
@@ -25,6 +25,7 @@ function FreeCompanyCard({ fc }) {
 
 FreeCompanyCard.propTypes = {
   fc: PropTypes.shape({
+    ID: PropTypes.string,
     Crest: PropTypes.arrayOf(PropTypes.string),
     Name: PropTypes.string,
     Server: PropTypes.string,

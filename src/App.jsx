@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import 'bootswatch/dist/lux/bootstrap.min.css';
+import 'bootswatch/dist/journal/bootstrap.min.css';
 import './App.css';
 import LeftNav from 'components/leftNav/LeftNav';
 import FreeCompany from 'components/pages/selections/FreeCompany';

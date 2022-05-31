@@ -71,6 +71,7 @@ function FreeCompany() {
                 />
               </Col>
               <Col lg={4}>
+                {/* TODO: Style this select */}
                 <Select
                   placeholder="Server (optional)"
                   isClearable

@@ -82,11 +82,7 @@ function FreeCompany() {
                 />
               </Col>
               <Col lg={4}>
-                <Button
-                  variant="primary"
-                  disabled={loading}
-                  onClick={searchFCs}
-                >
+                <Button disabled={loading} onClick={searchFCs}>
                   {/* TODO: Save last search */}
                   {loading ? (
                     <>

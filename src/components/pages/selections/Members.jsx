@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from 'react';
-import { Col, Row, Button } from 'react-bootstrap';
+import { Col, Row, Button, Spinner } from 'react-bootstrap';
 import FreeCompanyCard from 'components/freeCompany/FreeCompanyCard';
 import MemberTable from 'components/member/MemberTable';
 import { saveLocal, getLocal } from 'components/global/helpers';
@@ -7,14 +7,19 @@ import { saveLocal, getLocal } from 'components/global/helpers';
 function Members() {
   const [selectedFC] = useState(getLocal('selectedFC'));
   const [members, setMembers] = useState(getLocal('members'));
+  const [loading, setLoading] = useState(false);
 
   const getMembers = () => {
+    setLoading(true);
     if (!selectedFC) {
       alert('Please select a free company.');
     } else {
       fetch(`https://xivapi.com/freecompany/${selectedFC.ID}?data=FCM`)
         .then((response) => response.json())
-        .then((data) => setMembers(data.FreeCompanyMembers));
+        .then((data) => {
+          setLoading(false);
+          setMembers(data.FreeCompanyMembers);
+        });
     }
   };
 
@@ -31,7 +36,16 @@ function Members() {
           </Row>
           <Row style={{ marginTop: 10 }}>
             <Col>
-              <Button onClick={getMembers}>Fetch Members</Button>{' '}
+              <Button disabled={loading} onClick={getMembers}>
+                {loading ? (
+                  <>
+                    <Spinner as="span" size="sm" animation="border" />{' '}
+                    Fetching...
+                  </>
+                ) : (
+                  'Fetch Members from FC'
+                )}
+              </Button>
             </Col>
           </Row>
         </Col>

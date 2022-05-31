@@ -34,6 +34,8 @@ function FreeCompany() {
 
   const searchFCs = () => {
     setLoading(true);
+    localStorage.setItem('fcName', fcName);
+    localStorage.setItem('fcServer', fcServer);
     const url = `https://xivapi.com/freecompany/search?name=${fcName}&server=${fcServer}`;
     fetch(url)
       .then((response) => response.json())
@@ -48,10 +50,8 @@ function FreeCompany() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('fcName', fcName);
-    localStorage.setItem('fcServer', fcServer);
     localStorage.setItem('selectedFC', JSON.stringify(selectedFC));
-  }, [fcName, fcServer, selectedFC]);
+  }, [selectedFC]);
 
   return (
     <>
@@ -71,11 +71,13 @@ function FreeCompany() {
                 />
               </Col>
               <Col lg={4}>
+                {/* TODO: Style this select */}
                 <Select
                   placeholder="Server (optional)"
-                  value={{ label: fcServer, value: fcServer }}
+                  isClearable
+                  defaultValue={{ label: fcServer, value: fcServer }}
                   options={availableServers}
-                  onChange={(e) => setFcServer(e.value)}
+                  onChange={(e) => setFcServer(e?.value ?? '')}
                 />
               </Col>
               <Col lg={4}>
@@ -84,6 +86,7 @@ function FreeCompany() {
                   disabled={loading}
                   onClick={searchFCs}
                 >
+                  {/* TODO: Save last search */}
                   {loading ? (
                     <>
                       <Spinner as="span" size="sm" animation="border" />{' '}
@@ -105,6 +108,7 @@ function FreeCompany() {
         <Col>
           <FreeCompanyTable
             freeCompanies={tableData}
+            selectedFC={selectedFC}
             handleSelectFC={setSelectedFC}
           />
         </Col>

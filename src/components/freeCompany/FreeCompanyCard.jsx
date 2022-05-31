@@ -25,6 +25,7 @@ function FreeCompanyCard({ fc }) {
 
 FreeCompanyCard.propTypes = {
   fc: PropTypes.shape({
+    ID: PropTypes.string,
     Crest: PropTypes.arrayOf(PropTypes.string),
     Name: PropTypes.string,
     Server: PropTypes.string,

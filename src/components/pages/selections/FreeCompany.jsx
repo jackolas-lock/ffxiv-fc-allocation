@@ -3,15 +3,14 @@ import { Col, Form, Row, Button, Spinner } from 'react-bootstrap';
 import Select from 'react-select';
 import FreeCompanyCard from 'components/freeCompany/FreeCompanyCard';
 import FreeCompanyTable from 'components/freeCompany/FreeCompanyTable';
+import { saveLocal, getLocal } from 'components/global/helpers';
 
 function FreeCompany() {
   const [availableServers, setAvailableServers] = useState([]);
-  const [fcName, setFcName] = useState(localStorage.getItem('fcName'));
-  const [fcServer, setFcServer] = useState(localStorage.getItem('fcServer'));
-  const [selectedFC, setSelectedFC] = useState(
-    JSON.parse(localStorage.getItem('selectedFC'))
-  );
-  const [tableData, setTableData] = useState([]);
+  const [fcName, setFcName] = useState(getLocal('fcName'));
+  const [fcServer, setFcServer] = useState(getLocal('fcServer'));
+  const [selectedFC, setSelectedFC] = useState(getLocal('selectedFC'));
+  const [tableData, setTableData] = useState(getLocal('lastFcSearch'));
   const [loading, setLoading] = useState(false);
 
   const getServers = () => {
@@ -34,8 +33,8 @@ function FreeCompany() {
 
   const searchFCs = () => {
     setLoading(true);
-    localStorage.setItem('fcName', fcName);
-    localStorage.setItem('fcServer', fcServer);
+    saveLocal('fcName', fcName);
+    saveLocal('fcServer', fcServer);
     const url = `https://xivapi.com/freecompany/search?name=${fcName}&server=${fcServer}`;
     fetch(url)
       .then((response) => response.json())
@@ -50,8 +49,9 @@ function FreeCompany() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('selectedFC', JSON.stringify(selectedFC));
-  }, [selectedFC]);
+    saveLocal('selectedFC', selectedFC);
+    saveLocal('lastFcSearch', tableData);
+  }, [selectedFC, tableData]);
 
   return (
     <>
@@ -108,7 +108,7 @@ function FreeCompany() {
       <Row>
         <Col>
           <FreeCompanyTable
-            freeCompanies={tableData}
+            freeCompanies={tableData ?? undefined}
             selectedFC={selectedFC}
             handleSelectFC={setSelectedFC}
           />

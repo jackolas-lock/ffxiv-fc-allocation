@@ -35,12 +35,12 @@ function LeftNav({ className, onClick }) {
           >
             Members
           </MenuItem>
-          <MenuItem
+          {/* <MenuItem
             onClick={() => onClick('playerSearch')}
             icon={<FontAwesomeIcon icon={faUser} />}
           >
             Player search
-          </MenuItem>
+          </MenuItem> */}
         </SubMenu>
         <MenuItem
           onClick={() => onClick('minions')}

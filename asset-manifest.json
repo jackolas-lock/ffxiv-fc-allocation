@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ffxiv-fc-allocation/static/css/main.81f5413f.css",
+    "main.js": "/ffxiv-fc-allocation/static/js/main.13c4f504.js",
+    "index.html": "/ffxiv-fc-allocation/index.html",
+    "main.81f5413f.css.map": "/ffxiv-fc-allocation/static/css/main.81f5413f.css.map",
+    "main.13c4f504.js.map": "/ffxiv-fc-allocation/static/js/main.13c4f504.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.81f5413f.css",
+    "static/js/main.13c4f504.js"
+  ]
+}

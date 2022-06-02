@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ffxiv-fc-allocation/static/css/main.81f5413f.css",
-    "main.js": "/ffxiv-fc-allocation/static/js/main.086c1027.js",
+    "main.js": "/ffxiv-fc-allocation/static/js/main.51b1e0a4.js",
     "index.html": "/ffxiv-fc-allocation/index.html",
     "main.81f5413f.css.map": "/ffxiv-fc-allocation/static/css/main.81f5413f.css.map",
-    "main.086c1027.js.map": "/ffxiv-fc-allocation/static/js/main.086c1027.js.map"
+    "main.51b1e0a4.js.map": "/ffxiv-fc-allocation/static/js/main.51b1e0a4.js.map"
   },
   "entrypoints": [
     "static/css/main.81f5413f.css",
-    "static/js/main.086c1027.js"
+    "static/js/main.51b1e0a4.js"
   ]
 }

@@ -49,7 +49,7 @@ function MemberTable({ members }) {
               />
             </td>
             <td style={{ verticalAlign: 'middle' }}>
-              <Image style={{ width: 50 }} src={member.Avatar} />
+              <Image style={{ width: 50 }} rounded src={member.Avatar} />
             </td>
             <td style={{ verticalAlign: 'middle' }}>{member.Name}</td>
             <td style={{ verticalAlign: 'middle' }}>{member.Rank}</td>

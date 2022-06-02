@@ -4,6 +4,7 @@ import './App.css';
 import LeftNav from 'components/leftNav/LeftNav';
 import FreeCompany from 'components/pages/selections/FreeCompany';
 import Members from 'components/pages/selections/Members';
+import Mounts from 'components/pages/Mounts';
 import { getLocal, saveLocal } from 'components/global/helpers';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       <main>
         {activePage === 'freeCompany' && <FreeCompany />}
         {activePage === 'members' && <Members />}
+        {activePage === 'mounts' && <Mounts />}
       </main>
     </div>
   );

@@ -12,6 +12,7 @@ function Members() {
   const getMembers = () => {
     setLoading(true);
     if (!selectedFC) {
+      // TODO: better alert
       alert('Please select a free company.');
     } else {
       fetch(`https://xivapi.com/freecompany/${selectedFC.ID}?data=FCM`)

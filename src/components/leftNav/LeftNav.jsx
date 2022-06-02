@@ -43,16 +43,16 @@ function LeftNav({ className, onClick }) {
           </MenuItem> */}
         </SubMenu>
         <MenuItem
-          onClick={() => onClick('minions')}
-          icon={<FontAwesomeIcon icon={faPaw} />}
-        >
-          Minions
-        </MenuItem>
-        <MenuItem
           onClick={() => onClick('mounts')}
           icon={<FontAwesomeIcon icon={faHorse} />}
         >
           Mounts
+        </MenuItem>
+        <MenuItem
+          onClick={() => onClick('minions')}
+          icon={<FontAwesomeIcon icon={faPaw} />}
+        >
+          Minions
         </MenuItem>
       </Menu>
     </ProSidebar>

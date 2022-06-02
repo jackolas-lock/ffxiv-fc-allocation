@@ -6,7 +6,7 @@ import { getLocal, saveLocal } from 'components/global/helpers';
 function MemberTable({ members }) {
   const tableHeaders = ['', 'Avatar', 'Name', 'Rank'];
   const [selectedMembers, setSelectedMembers] = useState(
-    getLocal('selectedMembers') ?? []
+    getLocal('selectedMembers')
   );
 
   const handleSelectMember = (e, member) => {

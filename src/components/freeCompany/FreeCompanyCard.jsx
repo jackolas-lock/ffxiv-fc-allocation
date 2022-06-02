@@ -1,6 +1,7 @@
 import { React } from 'react';
 import { Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { isEmptyObject } from 'components/global/helpers';
 
 function FreeCompanyCard({ fc }) {
   return (
@@ -9,14 +10,14 @@ function FreeCompanyCard({ fc }) {
         <h3 style={{ marginBottom: 0 }}>Selected FC</h3>
       </Card.Header>
       <Card.Body>
-        {fc ? (
+        {isEmptyObject(fc) ? (
+          'No FC Selected'
+        ) : (
           <Card.Text>
             <strong>
               {fc.Name} | {fc.Server}
             </strong>
           </Card.Text>
-        ) : (
-          'No FC Selected'
         )}
       </Card.Body>
     </Card>

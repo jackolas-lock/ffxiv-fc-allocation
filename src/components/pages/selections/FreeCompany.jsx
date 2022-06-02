@@ -104,7 +104,7 @@ function FreeCompany() {
       <Row>
         <Col>
           <FreeCompanyTable
-            freeCompanies={tableData ?? undefined}
+            freeCompanies={tableData}
             selectedFC={selectedFC}
             handleSelectFC={setSelectedFC}
           />

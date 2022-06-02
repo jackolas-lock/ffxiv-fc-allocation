@@ -9,9 +9,7 @@ import { getLocal, saveLocal } from 'components/global/helpers';
 
 function App() {
   const [viewHeight] = useState(window.document.documentElement.clientHeight);
-  const [activePage, setActivePage] = useState(
-    getLocal('activePage') ?? 'freeCompany'
-  );
+  const [activePage, setActivePage] = useState(getLocal('activePage'));
 
   useEffect(() => {
     saveLocal('activePage', activePage);

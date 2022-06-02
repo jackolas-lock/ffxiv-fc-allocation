@@ -2,7 +2,7 @@ import { React, useEffect, useState } from 'react';
 import { Col, Row, Button, Spinner } from 'react-bootstrap';
 import FreeCompanyCard from 'components/freeCompany/FreeCompanyCard';
 import MemberTable from 'components/member/MemberTable';
-import { saveLocal, getLocal } from 'components/global/helpers';
+import { saveLocal, getLocal, isEmptyObject } from 'components/global/helpers';
 
 function Members() {
   const [selectedFC] = useState(getLocal('selectedFC'));
@@ -11,9 +11,10 @@ function Members() {
 
   const getMembers = () => {
     setLoading(true);
-    if (!selectedFC) {
+    if (isEmptyObject(selectedFC)) {
       // TODO: better alert
       alert('Please select a free company.');
+      setLoading(false);
     } else {
       fetch(`https://xivapi.com/freecompany/${selectedFC.ID}?data=FCM`)
         .then((response) => response.json())

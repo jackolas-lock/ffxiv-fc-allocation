@@ -1,7 +1,11 @@
 import dataMap from './dataMap';
 
 export function saveLocal(item, data) {
-  localStorage.setItem(item, JSON.stringify(data));
+  if (Array.isArray(dataMap[item]) || typeof dataMap[item] === 'object') {
+    localStorage.setItem(item, JSON.stringify(data));
+  } else {
+    localStorage.setItem(item, data);
+  }
 }
 
 export function getLocal(item) {

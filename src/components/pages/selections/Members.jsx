@@ -6,7 +6,7 @@ import { saveLocal, getLocal, isEmptyObject } from 'components/global/helpers';
 
 function Members() {
   const [selectedFC] = useState(getLocal('selectedFC'));
-  const [members, setMembers] = useState(getLocal('members'));
+  const [fcMembers, setfcMembers] = useState(getLocal('fcMembers'));
   const [loading, setLoading] = useState(false);
 
   const getMembers = () => {
@@ -20,14 +20,14 @@ function Members() {
         .then((response) => response.json())
         .then((data) => {
           setLoading(false);
-          setMembers(data.FreeCompanyMembers);
+          setfcMembers(data.FreeCompanyMembers);
         });
     }
   };
 
   useEffect(() => {
-    saveLocal('members', members);
-  }, [members]);
+    saveLocal('fcMembers', fcMembers);
+  }, [fcMembers]);
 
   return (
     <>
@@ -57,7 +57,7 @@ function Members() {
       </Row>
       <Row>
         <Col>
-          <MemberTable members={members} />
+          <MemberTable members={fcMembers} />
         </Col>
       </Row>
     </>

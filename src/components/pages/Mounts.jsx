@@ -5,8 +5,8 @@ import MemberTable from 'components/member/MemberTable';
 import { saveLocal, getLocal } from 'components/global/helpers';
 
 function Mounts() {
-  const [selectedMembers] = useState(getLocal('selectedMembers') ?? []);
-  const [mimoInfo, setMimoInfo] = useState(getLocal('mimoInfo') ?? []);
+  const [selectedMembers] = useState(getLocal('selectedMembers'));
+  const [mimoInfo, setMimoInfo] = useState(getLocal('mimoInfo'));
   const [loading, setLoading] = useState(false);
 
   const getMimo = () => {
@@ -38,6 +38,20 @@ function Mounts() {
     }
   };
 
+  const buttonText = () => {
+    if (loading) {
+      return (
+        <>
+          <Spinner as="span" size="sm" animation="border" /> Fetching...
+        </>
+      );
+    }
+    if (mimoInfo.length) {
+      return 'Refresh';
+    }
+    return 'Fetch';
+  };
+
   useEffect(() => {
     saveLocal('mimoInfo', mimoInfo);
   }, [mimoInfo]);
@@ -52,14 +66,7 @@ function Mounts() {
           <Row style={{ marginTop: 10 }}>
             <Col>
               <Button disabled={loading} onClick={getMimo}>
-                {loading ? (
-                  <>
-                    <Spinner as="span" size="sm" animation="border" />{' '}
-                    Fetching...
-                  </>
-                ) : (
-                  'Refresh'
-                )}
+                {buttonText()}
               </Button>
             </Col>
           </Row>

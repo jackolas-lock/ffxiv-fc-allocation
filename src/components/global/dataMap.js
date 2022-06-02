@@ -5,7 +5,7 @@ const dataMap = {
   fcServer: '',
   selectedMembers: [],
   lastFcSearch: [],
-  members: [],
+  fcMembers: [],
   mimoInfo: [],
 };
 

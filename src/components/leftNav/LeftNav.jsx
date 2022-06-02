@@ -16,7 +16,7 @@ function LeftNav({ className, onClick }) {
   return (
     <ProSidebar
       className={className}
-      image={`${process.env.PUBLIC_URL}worldmap.png`}
+      image={`${process.env.PUBLIC_URL}/worldmap.png`}
     >
       <Menu iconShape="circle">
         <SubMenu

@@ -8,7 +8,7 @@ function FreeCompanyTable({ freeCompanies, selectedFC, handleSelectFC }) {
   const crestSize = 3;
 
   return (
-    <Table style={{ marginTop: 30 }} striped hover>
+    <Table style={{ marginTop: 30 }} hover>
       <thead>
         <tr>
           {tableHeaders.map((header) => (
